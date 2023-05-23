@@ -1,1 +1,133 @@
-Hello world
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GGML</title>
+
+        <style>
+            #main {
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+            body { 
+                max-width: 650px;
+                line-height: 1.2;
+                font-size: 16px;
+                margin: 0 auto;
+            }
+            p, li {
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                hyphens: auto;
+                text-align: justify;
+            }
+            p {
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <h3>GGML</h3>
+
+            <h4>Tensor library for machine learning</h4>
+
+            <ul>
+                <li>Written in C</li>
+                <li>16-bit float support</li>
+                <li>Integer quantization support (e.g. 4-bit, 5-bit, 8-bit)</li>
+                <li>Automatic differentiation</li>
+                <li>Built-in optimization algorithms (e.g. ADAM, L-BFGS)</li>
+                <li>Optimized for Apple Silicon</li>
+                <li>On x86 architectures utilizes AVX / AVX2 intrinsics</li>
+                <li>No third-party dependencies</li>
+                <li>Zero memory allocations during runtime</li>
+            </ul>
+
+            Source code: <a href="https://github.com/ggerganov/ggml">https://github.com/ggerganov/ggml</a>
+
+            <h4>Philosophy / Vision</h4>
+
+            <ul>
+                <li>
+                    <strong>Focus for on-device inference</strong>
+                    <p>The primary goal of the project is to provide efficient CPU-based inference across a large
+                        variety of hardware. GPU-accelerated inference and training support are secondary goals</p>
+                </li>
+                <li>
+                    <strong>Open source</strong>
+                    <p>The library and all realated project are freely available under the MIT license. The development
+                        process is open and everyone is welcome to join</p>
+                </li>
+                <li>
+                    <strong>Minimalism</strong>
+                    <p>The codebase will remain as small and as simple as possible, ideally without any third-party
+                        dependencies</p>
+                </li>
+                <li>
+                    <strong>Demonstrate and educate</strong>
+                    <p>Contributors are encouraged to demonstrate the capabilities of the library by implementing
+                        various machine learning examples and applications</p>
+                </li>
+                <li>
+                    <strong>Explore and share new ideas</strong>
+                    <p>The project is a playground for new ideas and concepts. The idea is to collaborate in an open way
+                        so that we can all learn from each other, while we have fun in the process!</p>
+                </li>
+            </ul>
+
+            <h4>Examples</h4>
+
+            <ul>
+                <li>
+                    <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a>
+
+                    <p>High-performance inference of OpenAI's Whisper automatic speech recognition model</p>
+
+                    <p>The project provides a high-quality speech-to-text solution that runs on Mac, Windows, Linux,
+                        iOS, Android, Raspberry Pi, and Web</p>
+                </li>
+                <li>
+                    <a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a>
+
+                    <p>Inference of Meta's LLaMA large language model</p>
+
+                    <p>The project demonstrates efficient inference on Apple Silicon hardware and explores a variety of
+                        optimization techniques and applications of LLMs</p>
+                </li>
+            </ul>
+
+            <h4>Support / Funding</h4>
+
+            <ul>
+                <li>
+                    <p>The best way to support the project is by contributing to the codebase<p>
+                </li>
+                <li>
+                    <p>If you wish to financially support the project, please consider becoming a sponsor to any of the
+                        contributors that are already involved:</p>
+                    <ul>
+                        <li><a href="https://github.com/ggerganov/llama.cpp/graphs/contributors">llama.cpp contributors</a></li>
+                        <li><a href="https://github.com/ggerganov/whisper.cpp/graphs/contributors">whisper.cpp contributors</a></li>
+                        <li><a href="https://github.com/ggerganov/ggml/graphs/contributors">ggml contributors</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p>As of May 2023, the project has received the following funding:</p>
+                    [list investors]
+                </li>
+            </ul>
+
+            <h4>Hiring</h4>
+
+            <p>We are seeking to hire full-time developers that share our vision and would like to help advance the idea
+                of on-device inference using ggml. If you are interested and if you have already been a contributor to
+                any of the related projects, please contact us at [email]</p>
+
+            <h4>Business inquiries</h4>
+
+            <p>For any business related topics, please contact us at [email]. Please note that we are primarily
+                interested in open source projects, where the work can be shared publicly</p>
+        </div>
+    </body>
+</html>
