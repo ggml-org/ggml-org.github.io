@@ -65,6 +65,25 @@
                 </a>
             </div>
 
+            <br>
+
+            <p>Here are some sample performance stats on M1 Pro as of May 2023:</p>
+
+            <ul>
+                <li>
+                    Whisper Small Encoder, 7 CPU threads: 600 ms / run
+                </li>
+                <li>
+                    Whisper Small Encoder, ANE via Core ML: 200 ms / run
+                </li>
+                <li>
+                    7B LLaMA, 4-bit quantization, 3.5 GB, 8 CPU threads: 43 ms / token
+                </li>
+                <li>
+                    13B LLaMA, 4-bit quantization, 6.8 GB, 8 CPU threads: 73 ms / token
+                </li>
+            </ul>
+
             <h4>The <a href="https://github.com/ggerganov/ggml"><b>ggml</b></a> way</h4>
 
             <ul>
