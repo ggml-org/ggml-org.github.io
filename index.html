@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>GGML</title>
+        <title>ggml.ai</title>
 
         <style>
             #main {
@@ -28,9 +28,11 @@
     </head>
     <body>
         <div id="main">
-            <h3>GGML</h3>
+            <h3>GGML - AI at the edge</h3>
 
-            <h4>Tensor library for machine learning</h4>
+            <p><a href="https://github.com/ggerganov/ggml"><b>ggml</b></a> is a tensor library for machine learning to enable large models and high performance on
+                commodity hardware. It is used by <a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a> and
+                <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a></p>
 
             <ul>
                 <li>Written in C</li>
@@ -42,41 +44,49 @@
                 <li>On x86 architectures utilizes AVX / AVX2 intrinsics</li>
                 <li>No third-party dependencies</li>
                 <li>Zero memory allocations during runtime</li>
-            </ul>
-
-            Source code: <a href="https://github.com/ggerganov/ggml">https://github.com/ggerganov/ggml</a>
-
-            <h4>Philosophy / Vision</h4>
-
-            <ul>
-                <li>
-                    <strong>Focus for on-device inference</strong>
-                    <p>The primary goal of the project is to provide efficient CPU-based inference across a large
-                        variety of hardware. GPU-accelerated inference and training support are secondary goals</p>
-                </li>
-                <li>
-                    <strong>Open source</strong>
-                    <p>The library and all realated project are freely available under the MIT license. The development
-                        process is open and everyone is welcome to join</p>
-                </li>
-                <li>
-                    <strong>Minimalism</strong>
-                    <p>The codebase will remain as small and as simple as possible, ideally without any third-party
-                        dependencies</p>
-                </li>
-                <li>
-                    <strong>Demonstrate and educate</strong>
-                    <p>Contributors are encouraged to demonstrate the capabilities of the library by implementing
-                        various machine learning examples and applications</p>
-                </li>
-                <li>
-                    <strong>Explore and share new ideas</strong>
-                    <p>The project is a playground for new ideas and concepts. The idea is to collaborate in an open way
-                        so that we can all learn from each other, while we have fun in the process!</p>
-                </li>
+                <li>Guided language output support</li>
             </ul>
 
             <h4>Examples</h4>
+
+            <div align="center">
+                <p><i>Short voice command detection on a Raspberry Pi 4 using <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a></i></p>
+                <a href="https://twitter.com/ggerganov/status/1602759833312456704">
+                    <img src="command-guided-0.gif" alt="command-guided-0.gif" width="100%">
+                </a>
+            </div>
+
+            <br>
+
+            <div align="center">
+                <p><i>Simultaneously running 4 instances of 13B LLaMA + Whisper Small on a single M1 Pro</i></p>
+                <a href="https://twitter.com/ggerganov/status/1642115206544343040">
+                    <img src="llama-podcast-1-final-lq.gif" alt="llama-podcast-1-final-lq.gif" width="100%">
+                </a>
+            </div>
+
+            <h4>The <a href="https://github.com/ggerganov/ggml"><b>ggml</b></a> way</h4>
+
+            <ul>
+                <li>
+                    <strong>Minimal</strong>
+                    <p>We like simplicity and aim to keep the codebase as small and as simple as possible</p>
+                </li>
+                <li>
+                    <strong>Open Core</strong>
+                    <p>The library and related projects are freely available under the MIT license. The development
+                        process is open and everyone is welcome to join. In the future we may choose to develop
+                        extensions that are licensed for commercial use</p>
+                </li>
+                <li>
+                    <strong>Explore and have fun!</strong>
+                    <p>We built <a href="https://github.com/ggerganov/ggml"><b>ggml</b></a> in the spirit of play.
+                        Contributors are encouraged to try crazy ideas, build wild demos, and push the edge of what’s
+                        possible</p>
+                </li>
+            </ul>
+
+            <h4>Projects</h4>
 
             <ul>
                 <li>
@@ -97,7 +107,7 @@
                 </li>
             </ul>
 
-            <h4>Support / Funding</h4>
+            <h4>Contributing</h4>
 
             <ul>
                 <li>
@@ -113,21 +123,25 @@
                     </ul>
                 </li>
                 <li>
-                    <p>As of May 2023, the project has received the following funding:</p>
-                    [list investors]
+                    <p>You can join our Discord</p>
                 </li>
             </ul>
 
-            <h4>Hiring</h4>
+            <h4>Company</h4>
 
-            <p>We are seeking to hire full-time developers that share our vision and would like to help advance the idea
-                of on-device inference using ggml. If you are interested and if you have already been a contributor to
-                any of the related projects, please contact us at [email]</p>
+            <p><a href="https://ggml.ai">ggml.ai</a> is a company founded by <a
+                  href="https://github.com/ggerganov">Georgi Gerganov</a> to support the development of <a
+                  href="https://github.com/ggerganov/ggml"><b>ggml</b></a>. <a href="https://nat.org">Nat Friedman</a>
+              and <a href="https://dcgross.com">Daniel Gross</a> provided the pre-seed funding.</p>
+
+            <p>We are currently seeking to hire full-time developers that share our vision and would like to help
+                advance the idea of on-device inference. If you are interested and if you have already been a
+                contributor to any of the related projects, please contact us at jobs@ggml.ai </p>
 
             <h4>Business inquiries</h4>
 
-            <p>For any business related topics, please contact us at [email]. Please note that we are primarily
-                interested in open source projects, where the work can be shared publicly</p>
+            <p>For any business-related topics, including support or enterprise deployment, please contact us at
+                sales@ggml.ai</p>
         </div>
     </body>
 </html>
