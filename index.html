@@ -72,20 +72,35 @@
 
             <br>
 
-            <p>Here are some sample performance stats on M1 Pro as of May 2023:</p>
+            <div align="center">
+                <p><i>Running 7B LLaMA at 40 tok/s on M2 Max</i></p>
+                <a href="https://twitter.com/natfriedman/status/1665402680376987648">
+                    <img src="llama-metal-m2max-7b.gif" alt="llama-podcast-1-final-lq.gif" width="100%">
+                </a>
+            </div>
+
+            <br>
+
+            <p>Here are some sample performance stats on Apple Silicon June 2023:</p>
 
             <ul>
                 <li>
-                    Whisper Small Encoder, 7 CPU threads: 600 ms / run
+                    Whisper Small Encoder, M1 Pro, 7 CPU threads: 600 ms / run
                 </li>
                 <li>
-                    Whisper Small Encoder, ANE via Core ML: 200 ms / run
+                    Whisper Small Encoder, M1 Pro, ANE via Core ML: 200 ms / run
                 </li>
                 <li>
-                    7B LLaMA, 4-bit quantization, 3.5 GB, 8 CPU threads: 43 ms / token
+                    7B LLaMA, 4-bit quantization, 3.5 GB, M1 Pro, 8 CPU threads: 43 ms / token
                 </li>
                 <li>
-                    13B LLaMA, 4-bit quantization, 6.8 GB, 8 CPU threads: 73 ms / token
+                    13B LLaMA, 4-bit quantization, 6.8 GB, M1 Pro, 8 CPU threads: 73 ms / token
+                </li>
+                <li>
+                    7B LLaMA, 4-bit quantization, 3.5 GB, M2 Max GPU: 25 ms / token
+                </li>
+                <li>
+                    13B LLaMA, 4-bit quantization, 6.8 GB, M2 Max GPU: 42 ms / token
                 </li>
             </ul>
 
