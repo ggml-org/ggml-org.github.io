@@ -1,22 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <!-- Meta data for SEO -->
+        <meta name="description" content="GGML - AI at the edge. A tensor library for machine learning to enable large models and high performance on commodity hardware.">
+        <meta name="keywords" content="Machine Learning, AI, Tensor, ggml, LLaMA, Whisper">
+        <meta name="author" content="GGML">
         <title>ggml.ai</title>
-
+        <!-- Google font -->
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <!-- CSS for better mobile display and dark mode support -->
         <style>
-            #main {
-                margin-left: 10px;
-                margin-right: 10px;
-                margin-top: 40px;
-                margin-bottom: 40px;
-            }
             body { 
+                font-family: 'Fira Code', monospace;
                 max-width: 650px;
                 line-height: 1.2;
                 font-size: 16px;
                 margin: 0 auto;
+                padding: 10px;
+                -webkit-text-size-adjust: 100%;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                background-color: #fff;
+                color: #000;
+            }
+            a {
+                color: #0000ee;
+                text-decoration: none;
+            }
+            a:hover {
+                color: #551a8b;
             }
             p, li {
                 overflow-wrap: break-word;
@@ -28,13 +41,34 @@
                 margin-top: 0.5em;
                 margin-bottom: 0.5em;
             }
+            main {
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+            @media (prefers-color-scheme: dark) {
+                body {
+                    background-color: #333;
+                    color: #fff;
+                }
+                a {
+                    color: #add8e6;
+                }
+                a:hover {
+                    color: #ffa07a;
+                }
+            }
+            footer{
+                margin-bottom: 2em;
+            }
         </style>
     </head>
-    <body>
-        <div id="main">
-            <h3>GGML - AI at the edge</h3>
 
-            <p><a href="https://github.com/ggerganov/ggml"><b>ggml</b></a> is a tensor library for machine learning to enable large models and high performance on
+    <body>
+        <header>
+            <h2>GGML - AI at the edge</h2>
+        </header>
+        <main>
+           <p><a href="https://github.com/ggerganov/ggml"><b>ggml</b></a> is a tensor library for machine learning to enable large models and high performance on
                 commodity hardware. It is used by <a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a> and
                 <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a></p>
 
@@ -172,12 +206,15 @@
 
             <p>We are currently seeking to hire full-time developers that share our vision and would like to help
                 advance the idea of on-device inference. If you are interested and if you have already been a
-                contributor to any of the related projects, please contact us at jobs@ggml.ai </p>
+                contributor to any of the related projects, please contact us at <a href="mailto:jobs@ggml.ai">jobs@ggml.ai</a> </p>
 
             <h4>Business inquiries</h4>
 
             <p>For any business-related topics, including support or enterprise deployment, please contact us at
-                sales@ggml.ai</p>
-        </div>
+                <a href="mailto:sales@ggml.ai">sales@ggml.ai</a></p>
+        </main>
+        <footer>
+            <center>© <script>document.write(new Date().getFullYear());</script> <a href="https://ggml.ai">ggml.ai</a></center>
+        </footer>
     </body>
 </html>
