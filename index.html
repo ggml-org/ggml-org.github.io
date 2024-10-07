@@ -39,69 +39,13 @@
                 <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a></p>
 
             <ul>
-                <li>Written in C</li>
-                <li>16-bit float support</li>
-                <li>Integer quantization support (e.g. 4-bit, 5-bit, 8-bit)</li>
+                <li>Low-level cross-platform implementation</li>
+                <li>Integer quantization support</li>
+                <li>Broad hardware support</li>
                 <li>Automatic differentiation</li>
-                <li>Built-in optimization algorithms (e.g. ADAM, L-BFGS)</li>
-                <li>Optimized for Apple Silicon</li>
-                <li>On x86 architectures utilizes AVX / AVX2 intrinsics</li>
-                <li>Web support via WebAssembly and WASM SIMD</li>
+                <li>ADAM and L-BFGS optimizers</li>
                 <li>No third-party dependencies</li>
                 <li>Zero memory allocations during runtime</li>
-                <li>Guided language output support</li>
-            </ul>
-
-            <h4>Examples</h4>
-
-            <div align="center">
-                <p><i>Short voice command detection on a Raspberry Pi 4 using <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a></i></p>
-                <a href="https://twitter.com/ggerganov/status/1602759833312456704">
-                    <img src="command-guided-0.gif" alt="command-guided-0.gif" width="100%">
-                </a>
-            </div>
-
-            <br>
-
-            <div align="center">
-                <p><i>Simultaneously running 4 instances of 13B LLaMA + Whisper Small on a single M1 Pro</i></p>
-                <a href="https://twitter.com/ggerganov/status/1642115206544343040">
-                    <img src="llama-podcast-1-final-lq.gif" alt="llama-podcast-1-final-lq.gif" width="100%">
-                </a>
-            </div>
-
-            <br>
-
-            <div align="center">
-                <p><i>Running 7B LLaMA at 40 tok/s on M2 Max</i></p>
-                <a href="https://twitter.com/natfriedman/status/1665402680376987648">
-                    <img src="llama-metal-m2max-7b.gif" alt="llama-podcast-1-final-lq.gif" width="100%">
-                </a>
-            </div>
-
-            <br>
-
-            <p>Here are some sample performance stats on Apple Silicon June 2023:</p>
-
-            <ul>
-                <li>
-                    Whisper Small Encoder, M1 Pro, 7 CPU threads: 600 ms / run
-                </li>
-                <li>
-                    Whisper Small Encoder, M1 Pro, ANE via Core ML: 200 ms / run
-                </li>
-                <li>
-                    7B LLaMA, 4-bit quantization, 3.5 GB, M1 Pro, 8 CPU threads: 43 ms / token
-                </li>
-                <li>
-                    13B LLaMA, 4-bit quantization, 6.8 GB, M1 Pro, 8 CPU threads: 73 ms / token
-                </li>
-                <li>
-                    7B LLaMA, 4-bit quantization, 3.5 GB, M2 Max GPU: 25 ms / token
-                </li>
-                <li>
-                    13B LLaMA, 4-bit quantization, 6.8 GB, M2 Max GPU: 42 ms / token
-                </li>
             </ul>
 
             <h4>The <a href="https://github.com/ggerganov/ggml"><b>ggml</b></a> way</h4>
