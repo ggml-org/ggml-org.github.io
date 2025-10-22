@@ -25,6 +25,13 @@ if ! uname --all | grep -qiE "spark" && ! uname --all | grep -qiE "nvidia"; then
     exit 1
 fi
 
+# check for libcurl dev package
+if ! dpkg -l libcurl4-openssl-dev 2>/dev/null | grep -q '^ii'; then
+    printf "[E] Required package 'libcurl4-openssl-dev' is not installed.\n"
+    printf "    Install it with: sudo apt-get install libcurl4-openssl-dev\n"
+    exit 1
+fi
+
 # Warn if the ggml-org directory already exists
 if [ -d "$HOME/ggml-org" ]; then
     read -p "[W] The directory '~/ggml-org' already exists and will be deleted. Continue? (y/N) " answer
