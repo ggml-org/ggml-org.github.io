@@ -1,83 +1,340 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ggml — AI at the edge</title>
+    <meta name="description" content="ggml is a tensor library for machine learning to enable large models and high performance on commodity hardware.">
+    <meta property="og:title" content="ggml — AI at the edge">
+    <meta property="og:description" content="A tensor library for machine learning to enable large models and high performance on commodity hardware.">
+    <meta property="og:url" content="https://ggml.ai">
+    <meta property="og:type" content="website">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <title>ggml.ai</title>
+        :root {
+            --bg: #ffffff;
+            --text: #111;
+            --text-sec: #555;
+            --text-dim: #999;
+            --line: #e5e5e5;
+            --surface: #fafafa;
+        }
 
-        <style>
-            #main {
-                margin-left: 10px;
-                margin-right: 10px;
-                margin-top: 40px;
-                margin-bottom: 40px;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0b0b0b;
+                --text: #e5e5e5;
+                --text-sec: #a0a0a0;
+                --text-dim: #555;
+                --line: #1e1e1e;
+                --surface: #141414;
             }
-            body { 
-                max-width: 650px;
-                line-height: 1.2;
-                font-size: 16px;
-                margin: 0 auto;
-            }
-            p, li {
-                overflow-wrap: break-word;
-                word-wrap: break-word;
-                hyphens: auto;
-                text-align: justify;
-            }
-            p {
-                margin-top: 0.5em;
-                margin-bottom: 0.5em;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="main">
-            <h3>GGML - AI at the edge</h3>
 
-            <p><a href="https://github.com/ggml-org/ggml"><b>ggml</b></a> is a tensor library for machine learning to enable large models and high performance on
-                commodity hardware. It is used by <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> and
-                <a href="https://github.com/ggml-org/whisper.cpp">whisper.cpp</a></p>
+            .hero .logo { filter: invert(1); }
+        }
 
-            <ul>
-                <li>Low-level cross-platform implementation</li>
-                <li>Integer quantization support</li>
-                <li>Broad hardware support</li>
-                <li>No third-party dependencies</li>
-                <li>Zero memory allocations during runtime</li>
-            </ul>
+        ::selection {
+            background: var(--text);
+            color: var(--bg);
+        }
 
-            <h4>The <a href="https://github.com/ggml-org/ggml"><b>ggml</b></a> way</h4>
+        html {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
 
-            <ul>
-                <li>
-                    <strong>Minimal</strong>
-                    <p>We like simplicity and aim to keep the codebase as small and as simple as possible</p>
-                </li>
-                <li>
-                    <strong>Open Core</strong>
-                    <p>The library and related projects are freely available under the MIT license. The development
-                        process is open and everyone is welcome to join. In the future we may choose to develop
-                        extensions that are licensed for commercial use</p>
-                </li>
-                <li>
-                    <strong>Explore and have fun!</strong>
-                    <p>We built <a href="https://github.com/ggml-org/ggml"><b>ggml</b></a> in the spirit of play.
-                        Contributors are encouraged to try crazy ideas, build wild demos, and push the edge of what’s
-                        possible</p>
-                </li>
-            </ul>
+        body {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-            <h4>Contributing</h4>
+        a {
+            color: inherit;
+            text-decoration-color: var(--line);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.15s;
+        }
 
-            <p>Join the development at <a href="https://github.com/ggml-org">ggml-org</a> on GitHub.
+        a:hover {
+            text-decoration-color: currentColor;
+        }
 
-            <h4>Company</h4>
+        .hero {
+            padding: 7rem 0 5rem;
+            text-align: center;
+        }
 
-            <p><a href="https://ggml.ai">ggml.ai</a> is a company founded in 2023 by <a
-                  href="https://github.com/ggerganov">Georgi Gerganov</a> to support the development of <a
-                  href="https://github.com/ggml-org/ggml"><b>ggml</b></a>. <a href="https://nat.org">Nat Friedman</a>
-              and <a href="https://dcgross.com">Daniel Gross</a> provided the pre-seed funding. The company was
-              acquired by <a href="https://huggingface.co">Hugging Face</a> in 2026.</p>
+        .hero-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .hero .logo {
+            width: 42px;
+            height: 42px;
+            image-rendering: pixelated;
+            flex-shrink: 0;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -0.045em;
+            line-height: 1;
+        }
+
+        .hero p {
+            margin-top: 0.6rem;
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            letter-spacing: 0.01em;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 480px;
+            margin: 0 auto 4.5rem;
+            color: var(--text-sec);
+            line-height: 1.75;
+        }
+
+        .spec {
+            list-style: none;
+            border-top: 1px solid var(--line);
+            margin-bottom: 4.5rem;
+        }
+
+        .spec li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.5rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--line);
+            font-size: 0.875rem;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .spec-value {
+            color: var(--text-dim);
+            text-align: right;
+        }
+
+        .label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 1.25rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .cols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .cols h3 {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+
+        .cols p {
+            font-size: 0.8125rem;
+            color: var(--text-sec);
+            line-height: 1.65;
+        }
+
+        .repos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .repos a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            padding: 0.4rem 0.75rem;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: border-color 0.15s, background 0.15s;
+        }
+
+        .repos a:hover {
+            border-color: var(--text-dim);
+            background: var(--surface);
+        }
+
+        .repos svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        .company {
+            font-size: 0.9375rem;
+            color: var(--text-sec);
+            line-height: 1.75;
+        }
+
+        footer {
+            padding: 1.75rem 0 3rem;
+            border-top: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        footer a {
+            color: var(--text-dim);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        footer nav {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 520px) {
+            .hero { padding: 5rem 0 3.5rem; }
+            .hero h1 { font-size: 2.4rem; }
+            .hero .logo { width: 34px; height: 34px; }
+            .cols { grid-template-columns: 1fr; gap: 1.5rem; }
+            .spec li { flex-direction: column; gap: 0.15rem; }
+            .spec-value { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-title">
+            <img src="134263123.jpeg" alt="ggml" class="logo" width="42" height="42">
+            <h1>ggml</h1>
         </div>
-    </body>
+        <p>AI at the edge</p>
+    </header>
+
+    <p class="intro">
+        A tensor library for machine learning to enable large models and high
+        performance on commodity hardware. Built for
+        <a href="https://github.com/ggml-org/llama.cpp"><b>llama.cpp</b></a> and
+        <a href="https://github.com/ggml-org/whisper.cpp"><b>whisper.cpp</b></a>.
+    </p>
+
+    <ul class="spec">
+        <li>
+            <span class="spec-label">Cross-platform</span>
+            <span class="spec-value">Low-level implementation</span>
+        </li>
+        <li>
+            <span class="spec-label">Quantization</span>
+            <span class="spec-value">Integer quantization support</span>
+        </li>
+        <li>
+            <span class="spec-label">Hardware</span>
+            <span class="spec-value">Broad hardware support</span>
+        </li>
+        <li>
+            <span class="spec-label">Dependencies</span>
+            <span class="spec-value">None</span>
+        </li>
+        <li>
+            <span class="spec-label">Runtime allocations</span>
+            <span class="spec-value">Zero</span>
+        </li>
+    </ul>
+
+    <section>
+        <p class="label">The ggml way</p>
+        <div class="cols">
+            <div>
+                <h3>Minimal</h3>
+                <p>We like simplicity and aim to keep the codebase as small and as simple as possible.</p>
+            </div>
+            <div>
+                <h3>Open core</h3>
+                <p>Freely available under the MIT license. Development is open and everyone is welcome to join.</p>
+            </div>
+            <div>
+                <h3>Explore&nbsp;&amp;&nbsp;play</h3>
+                <p>Try crazy ideas, build wild demos, and push the edge of what's possible.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <p class="label">Repositories</p>
+        <div class="repos">
+            <a href="https://github.com/ggml-org/ggml">
+                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                ggml
+            </a>
+            <a href="https://github.com/ggml-org/llama.cpp">
+                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                llama.cpp
+            </a>
+            <a href="https://github.com/ggml-org/whisper.cpp">
+                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                whisper.cpp
+            </a>
+            <a href="https://github.com/ggml-org">
+                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                ggml-org
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <p class="label">Company</p>
+        <p class="company">
+            <a href="https://ggml.ai">ggml.ai</a> was founded in 2023 by
+            <a href="https://github.com/ggerganov">Georgi Gerganov</a> to support the
+            development of <a href="https://github.com/ggml-org/ggml"><b>ggml</b></a>.
+            <a href="https://nat.org">Nat Friedman</a> and
+            <a href="https://dcgross.com">Daniel Gross</a> provided the pre-seed funding.
+            The company was acquired by <a href="https://huggingface.co">Hugging Face</a> in 2026.
+        </p>
+    </section>
+
+    <footer>
+        <span><b>ggml</b></span>
+        <nav>
+            <a href="https://github.com/ggml-org">GitHub</a>
+        </nav>
+    </footer>
+
+</body>
 </html>
