@@ -1,36 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>ggml.ai</title>
 
+        <script>
+            try {
+                var savedMode = localStorage.getItem('theme');
+                if (savedMode === 'dark' || (savedMode !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) {}
+        </script>
+
         <style>
+            :root {
+                --background: #ffffff;
+                --foreground: #0a0a0a;
+                --muted-foreground: #737373;
+                --accent: #f65e00;
+                color-scheme: light;
+            }
+            .dark {
+                --background: #0d0d0d;
+                --foreground: #fafafa;
+                --muted-foreground: #a1a1a1;
+                color-scheme: dark;
+            }
+
+            body {
+                max-width: 650px;
+                min-width: 320px;
+                line-height: 1.5;
+                font-size: 16px;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+                margin: 0 auto;
+                background-color: var(--background);
+                color: var(--foreground);
+                transition: background-color .15s ease, color .15s ease;
+            }
             #main {
                 margin-left: 10px;
                 margin-right: 10px;
-                margin-top: 40px;
                 margin-bottom: 40px;
-            }
-            body { 
-                max-width: 650px;
-                line-height: 1.2;
-                font-size: 16px;
-                margin: 0 auto;
             }
             p, li {
                 overflow-wrap: break-word;
                 word-wrap: break-word;
-                hyphens: auto;
-                text-align: justify;
             }
             p {
                 margin-top: 0.5em;
                 margin-bottom: 0.5em;
             }
+            h3 {
+                font-size: 1.875rem;
+                font-weight: 500;
+                letter-spacing: -0.025em;
+                text-wrap: balance;
+                margin: 0 0 0.6em;
+            }
+            h4 {
+                font-size: 1.125rem;
+                font-weight: 600;
+                letter-spacing: -0.01em;
+                margin: 1.4em 0 0.5em;
+            }
+            li strong {
+                font-weight: 600;
+            }
+            a {
+                color: var(--foreground);
+                text-decoration: underline;
+                text-decoration-color: rgba(0, 0, 0, 0.3);
+                text-underline-offset: 3px;
+                transition: color .15s ease;
+            }
+            a:hover {
+                color: var(--accent);
+                text-decoration-color: var(--accent);
+            }
+            .dark a {
+                text-decoration-color: rgba(255, 255, 255, 0.3);
+            }
+            ::selection {
+                background: var(--accent);
+            }
+            #theme-toggle {
+                display: grid;
+                place-items: center;
+                width: 2.25rem;
+                height: 2.25rem;
+                margin: 1rem 0 1rem auto;
+                border: none;
+                border-radius: .5rem;
+                background: transparent;
+                color: var(--muted-foreground);
+                cursor: pointer;
+                transition: color .15s ease, background-color .15s ease;
+            }
+            #theme-toggle:hover {
+                color: var(--foreground);
+                background: rgba(0, 0, 0, 0.08);
+            }
+            #theme-toggle:focus-visible {
+                outline: 2px solid var(--accent);
+                outline-offset: 2px;
+            }
+            .dark #theme-toggle:hover {
+                background: rgba(255, 255, 255, 0.08);
+            }
+            #theme-toggle svg {
+                width: 1rem;
+                height: 1rem;
+            }
+            #theme-toggle .icon-moon { display: none; }
+            #theme-toggle .icon-monitor { display: none; }
+            #theme-toggle[data-mode="dark"] .icon-sun { display: none; }
+            #theme-toggle[data-mode="dark"] .icon-moon { display: block; }
+            #theme-toggle[data-mode="system"] .icon-sun { display: none; }
+            #theme-toggle[data-mode="system"] .icon-monitor { display: block; }
+            @media (max-width: 700px) {
+                #main {
+                    margin-left: 20px;
+                    margin-right: 20px;
+                }
+            }
         </style>
     </head>
     <body>
+        <button id="theme-toggle" data-mode="system" aria-label="Theme: system (click to change)" title="Theme: system (click to change)">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+            <svg class="icon-monitor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                <line x1="8" x2="16" y1="21" y2="21"></line>
+                <line x1="12" x2="12" y1="17" y2="21"></line>
+            </svg>
+        </button>
         <div id="main">
             <h3>GGML - AI at the edge</h3>
 
@@ -46,7 +167,7 @@
                 <li>Zero memory allocations during runtime</li>
             </ul>
 
-            <h4>The <a href="https://github.com/ggml-org/ggml"><b>ggml</b></a> way</h4>
+            <h4>The <a href="https://github.com/ggml-org/ggml">ggml</a> way</h4>
 
             <ul>
                 <li>
@@ -69,7 +190,7 @@
 
             <h4>Contributing</h4>
 
-            <p>Join the development at <a href="https://github.com/ggml-org">ggml-org</a> on GitHub.
+            <p>Join the development at <a href="https://github.com/ggml-org">ggml-org</a> on GitHub.</p>
 
             <h4>Company</h4>
 
@@ -79,5 +200,41 @@
               and <a href="https://dcgross.com">Daniel Gross</a> provided the pre-seed funding. The company was
               acquired by <a href="https://huggingface.co">Hugging Face</a> in 2026.</p>
         </div>
+
+        <script>
+            const root = document.documentElement;
+            const btn = document.getElementById('theme-toggle');
+            const mq = window.matchMedia
+                ? window.matchMedia('(prefers-color-scheme: dark)')
+                : null;
+            const modes = ['system', 'light', 'dark'];
+            let mode = 'system';
+            try {
+                const saved = localStorage.getItem('theme');
+                if (modes.includes(saved)) mode = saved;
+            } catch (e) {}
+            function apply() {
+                const dark = mode === 'dark' || (mode === 'system' && mq && mq.matches);
+                root.classList.toggle('dark', dark);
+                btn.dataset.mode = mode;
+                btn.setAttribute('aria-label', 'Theme: ' + mode + ' (click to change)');
+                btn.setAttribute('title', 'Theme: ' + mode + ' (click to change)');
+            }
+            if (mq) {
+                function onMqChange() {
+                    if (mode === 'system') apply();
+                }
+                if (mq.addEventListener) mq.addEventListener('change', onMqChange);
+                else mq.addListener(onMqChange);
+            }
+            btn.addEventListener('click', function () {
+                mode = modes[(modes.indexOf(mode) + 1) % modes.length];
+                try {
+                    localStorage.setItem('theme', mode);
+                } catch (e) {}
+                apply();
+            });
+            apply();
+        </script>
     </body>
 </html>
